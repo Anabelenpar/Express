@@ -1,0 +1,42 @@
+version: "3.5"
+networks:
+  express-net:
+    name: express-net
+    driver: bridge
+
+volumes:
+  pgdata:
+  pgadmin:
+
+services:
+  express-db:
+    image: postgres:12.8
+    container_name: express-db
+    restart: always
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: express-db-apartida
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks: 
+      - express-net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    depends_on:
+      - express-db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@local.host
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_LISTEN_PORT: 8080
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "8081:8080"
+    networks: 
+      - express-net
