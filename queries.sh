@@ -9,7 +9,7 @@ curl -X GET http://localhost:3000/api/users/1
 #Crear un nuevo usuario (POST /api/users)
 curl -X POST http://localhost:3000/api/users \
   -H "Content-Type: application/json" \
-  -d '{"email": "newuser@example.com", "password": "newpassword", "type": "user"}'
+  -d '{"email": "newuser@example.com", "password": "newpassword", "type": "user", "active": true}'
 
 #Actualizar un usuario (PUT /api/users/:id)
 curl -X PUT http://localhost:3000/api/users/1 \
@@ -63,21 +63,21 @@ curl -X DELETE http://localhost:3000/api/students/1
 #Tras la implementación de la clase 6
 
 #Iniciar sesión (POST /login)
-curl -X POST http://localhost:3000/login \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "username=admin@example.com&password=password123"
-
+#url -X POST http://localhost:3000/login \
+# -H "Content-Type: application/x-www-form-urlencoded" \
+# -d "username=admin@example.com&password=password123"
+#
 #Obtener token JWT (POST /api/token)
-curl -X POST http://localhost:3000/api/token \
-  -H "Content-Type: application/json" \
-  -d '{"username": "admin@example.com", "password": "password123"}'
-
+#url -X POST http://localhost:3000/api/token \
+# -H "Content-Type: application/json" \
+# -d '{"username": "admin@example.com", "password": "password123"}'
+#
 #Activar un usuario (POST /api/users/:id/active)
-curl -X POST http://localhost:3000/api/users/1/active \
-  -H "Authorization: Bearer <tu_token_jwt>"
-
+#url -X POST http://localhost:3000/api/users/1/active \
+# -H "Authorization: Bearer <tu_token_jwt>"
+#
 #Obtener estado de activación de un usuario (GET /api/users/:id/active)
-curl -X GET http://localhost:3000/api/users/1/active \
-  -H "Authorization: Bearer <tu_token_jwt>"
+#url -X GET http://localhost:3000/api/users/1/active \
+# -H "Authorization: Bearer <tu_token_jwt>"
 
 
